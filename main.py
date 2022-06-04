@@ -1,5 +1,6 @@
 import sys
 import os
+import xml.etree.ElementTree as ET
 
 if len(sys.argv) <= 1:
     print("Usege:")
@@ -17,5 +18,13 @@ def list_manifests(project_path, on_manifest):
                     on_manifest(path)
 
 
+def parse_android_manifest_xml(path):
+    tree = ET.parse(path)
+    root = tree.getroot()
+    activities = root.findall("./application/activity")
+    for activity in activities:
+        print(activity.get("{http://schemas.android.com/apk/res/android}name"))
+
+
 project_path = sys.argv[1]
-list_manifests(project_path, lambda path: print(path))
+list_manifests(project_path, parse_android_manifest_xml)
