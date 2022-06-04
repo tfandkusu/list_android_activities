@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "list_android_activities"
+version = "0.1.0"
+description = "List Android activities from AndroidManifest.xml"
+authors = ["Haruhiko Takada <haruhiko.takada@gmail.com>"]
+license = "Apache License 2.0"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+black = "^22.3.0"
+pyproject-flake8 = "^0.0.1-alpha.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+max-line-length = 88
+ignore = "E203"
+exclude = ".venv"
